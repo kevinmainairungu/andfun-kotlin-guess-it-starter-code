@@ -25,12 +25,17 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.android.guesstheword.R
 import com.example.android.guesstheword.databinding.GameFragmentBinding
+import timber.log.Timber
 
 /**
  * Fragment where the game is played
  */
-class GameFragment : Fragment() {
+// create constant values for the word to be used on savedInstanceState and onRestoreInstanceState
+const val WORD_VALUE = "WORD_WORD"
 
+const val SCORE_VALUE = "SCORE_SCORE"
+
+class GameFragment : Fragment() {
     // The current word
     private var word = ""
 
@@ -60,6 +65,13 @@ class GameFragment : Fragment() {
         binding.skipButton.setOnClickListener { onSkip() }
         updateScoreText()
         updateWordText()
+
+        if (savedInstanceState != null) {
+            word = savedInstanceState.getString(WORD_VALUE, "")
+            score = savedInstanceState.getInt(SCORE_VALUE, score)
+            updateWordText()
+            updateScoreText()
+        }
         return binding.root
 
     }
@@ -137,5 +149,39 @@ class GameFragment : Fragment() {
 
     private fun updateScoreText() {
         binding.scoreText.text = score.toString()
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString(WORD_VALUE, word)
+        outState.putInt(SCORE_VALUE, score)
+        super.onSaveInstanceState(outState)
+    }
+
+
+
+    override fun onStart() {
+        super.onStart()
+        Timber.i("onStart has been called")
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Timber.i("onResume has been called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Timber.i("onPause has been called")
+    }
+
+
+    override fun onStop() {
+        super.onStop()
+        Timber.i("onStop has been called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Timber.i("onDestroy has been called")
     }
 }
