@@ -22,6 +22,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.android.guesstheword.R
 import com.example.android.guesstheword.databinding.GameFragmentBinding
@@ -156,32 +158,4 @@ class GameFragment : Fragment() {
         super.onSaveInstanceState(outState)
     }
 
-
-
-    override fun onStart() {
-        super.onStart()
-        Timber.i("onStart has been called")
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Timber.i("onResume has been called")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Timber.i("onPause has been called")
-    }
-
-
-    override fun onStop() {
-        super.onStop()
-        Timber.i("onStop has been called")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Timber.i("onDestroy has been called")
-    }
 }
