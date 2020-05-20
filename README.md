@@ -1,5 +1,4 @@
 # Application Architecture - The UI Layer - Guess It!
-This is the toy app for lesson 5 of the [Android App Development in Kotlin course on Udacity](https://www.udacity.com/course/developing-android-apps-with-kotlin--ud9012).
 
 ## Guess It!
 
@@ -54,9 +53,7 @@ The basic steps are:
 
 As you go through the course, you'll be instructed to clone the different exercise repositories, so you don't need to set these up now. You can clone a repository from GitHub in a folder of your choice with the command:
 
-```bash
-git clone https://github.com/udacity/REPOSITORY_NAME.git
-```
+
 
 **Step 2: Check out the step branch**
 
