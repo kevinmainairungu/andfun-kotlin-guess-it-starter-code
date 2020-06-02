@@ -22,12 +22,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.example.android.guesstheword.R
 import com.example.android.guesstheword.databinding.GameFragmentBinding
 import timber.log.Timber
+
 
 /**
  * Fragment where the game is played
@@ -38,6 +38,10 @@ const val WORD_VALUE = "WORD_WORD"
 const val SCORE_VALUE = "SCORE_SCORE"
 
 class GameFragment : Fragment() {
+
+//    make a field for the new ViewModel
+
+    private lateinit var viewModel: GameViewModel
     // The current word
     private var word = ""
 
@@ -59,6 +63,10 @@ class GameFragment : Fragment() {
                 container,
                 false
         )
+// viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java) earlier versions of the ViewModel class and it has been deprecated
+
+        Timber.i("called ViewModelProviders of")
+        viewModel = ViewModelProvider(this).get(GameViewModel :: class.java)
 
         resetList()
         nextWord()
