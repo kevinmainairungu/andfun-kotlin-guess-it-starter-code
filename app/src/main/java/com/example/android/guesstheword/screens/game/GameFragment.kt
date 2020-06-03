@@ -17,6 +17,7 @@
 package com.example.android.guesstheword.screens.game
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -65,8 +66,8 @@ class GameFragment : Fragment() {
         )
 // viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java) earlier versions of the ViewModel class and it has been deprecated
 
-        Timber.i("called ViewModelProviders of")
-        viewModel = ViewModelProvider(this).get(GameViewModel :: class.java)
+        Timber.i("Called ViewModel")
+        viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
         resetList()
         nextWord()
