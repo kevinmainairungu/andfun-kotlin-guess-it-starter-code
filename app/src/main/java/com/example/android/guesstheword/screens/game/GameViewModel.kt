@@ -3,7 +3,7 @@ package com.example.android.guesstheword.screens.game
 import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
-class GameViewModel : ViewModel() {
+class GameViewModel : ViewModel()  {
 
      var word = ""
 
@@ -12,6 +12,12 @@ class GameViewModel : ViewModel() {
 
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>
+
+    init {
+        resetList()
+        nextWord()
+    }
+
 
 
     private fun resetList() {
@@ -41,11 +47,6 @@ class GameViewModel : ViewModel() {
         wordList.shuffle()
     }
 
-    init {
-        resetList()
-        nextWord()
-    }
-
 
     /**
      * Moves to the next word in the list
@@ -53,7 +54,7 @@ class GameViewModel : ViewModel() {
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
-//            GameFinished()
+//             GameFinished()
         } else {
             word = wordList.removeAt(0)
         }

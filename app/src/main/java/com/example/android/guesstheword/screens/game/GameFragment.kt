@@ -72,7 +72,7 @@ class GameFragment : Fragment() {
             updateWordText()
         }
         binding.skipButton.setOnClickListener {
-            onSkip()
+            viewModel.onSkip()
             updateScoreText()
             updateWordText()
         }
@@ -83,24 +83,24 @@ class GameFragment : Fragment() {
     }
 
 
-    /** Methods for buttons presses **/
+//    /** Methods for buttons presses **/
+//
+//    private fun onSkip() {
+//        viewModel.onSkip()
+//        updateWordText()
+//        updateScoreText()
+//    }
+//
+//    private fun onCorrect() {
+//        viewModel.onCorrect()
+//        updateWordText()
+//        updateScoreText()
+//    }
 
-    private fun onSkip() {
-        viewModel.onSkip()
-        updateWordText()
-        updateScoreText()
-    }
-
-    private fun onCorrect() {
-        viewModel.onCorrect()
-        updateWordText()
-        updateScoreText()
-    }
-
-    private fun GameFinished() {
+    fun GameFinished() {
         Toast.makeText(activity, "Game has just finished", Toast.LENGTH_LONG).show()
         val action = GameFragmentDirections.actionGameToScore(viewModel.score)
-        NavHostFragment.findNavController(this).navigate(action)
+       findNavController(this).navigate(action)
     }
 
     /** Methods for updating the UI **/
@@ -113,11 +113,6 @@ class GameFragment : Fragment() {
     private fun updateScoreText() {
         binding.scoreText.text = viewModel.score.toString()
     }
-//    function to endGame
-    private fun onEndGame(){
-        GameFinished()
-    }
-
 
 
 }

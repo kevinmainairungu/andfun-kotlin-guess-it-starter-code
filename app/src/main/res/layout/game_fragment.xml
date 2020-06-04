@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:fontFamily="sans-serif"
+            android:fontFamily="monospace"
             android:text="@string/word_is"
             android:textColor="@color/black_text_color"
             android:textSize="14sp"
