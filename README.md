@@ -13,7 +13,7 @@ If you get the word right, press **Got It**. If you're stuck, press **Skip**. Th
   <h3 align="center">About Me</h3>
 
   <p align="center">
-    A trivia game<br>
+    A Guessing game<br>
    on Android.
     <br>
      <img src="https://forthebadge.com/images/badges/built-for-android.svg" alt="droidconKE2020 built for Android">
