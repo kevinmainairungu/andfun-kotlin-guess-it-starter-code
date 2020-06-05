@@ -102,6 +102,8 @@ You can:
 - [ ] SplashScreen
 - [x] Binding data
 - [x] Removed Fragment Logic to the ViewModel
+- [x] LiveData
+-[x] Separation of concern
 
 
 #### CONTRIBUTING
