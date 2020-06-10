@@ -10,7 +10,7 @@ If you get the word right, press **Got It**. If you're stuck, press **Skip**. Th
 <p align="center">
   <a href="https://github.com/kevinmainairungu/andfun-kotlin-android-trivia#about-the-app">
   </a>
-  <h3 align="center">About Me</h3>
+  <h3 align="center">About the app</h3>
 
   <p align="center">
     A Guessing game<br>
