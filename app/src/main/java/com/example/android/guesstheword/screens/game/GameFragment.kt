@@ -86,7 +86,9 @@ class GameFragment : Fragment() {
 
     fun GameFinished() {
         Toast.makeText(activity, "Game has just finished", Toast.LENGTH_LONG).show()
-        val action = GameFragmentDirections.actionGameToScore(viewModel.score)
+//        We use the elvis operator to check if the score value is not null. If it is give it the value 0
+        val currentScore = viewModel.score.value ?: 0
+        val action = GameFragmentDirections.actionGameToScore(currentScore)
        findNavController(this).navigate(action)
     }
 

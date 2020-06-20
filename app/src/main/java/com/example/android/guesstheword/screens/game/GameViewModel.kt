@@ -8,7 +8,7 @@ class GameViewModel : ViewModel() {
     var word = ""
 
     // The current score
-    var score: MutableLiveData<Int>()
+    val score = MutableLiveData<Int>()
 
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>
