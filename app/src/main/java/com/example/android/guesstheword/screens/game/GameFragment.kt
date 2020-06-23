@@ -74,6 +74,7 @@ class GameFragment : Fragment() {
             updateWordText()
 
         }
+//        lifecycle observer no need to call onDestroy
         viewModel.score.observe(this, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
         })
