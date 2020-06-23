@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
 class GameViewModel : ViewModel() {
-    var word = ""
+//    livedata mutablelist
+    var word = MutableLiveData<String>()
 
     // The current score
     val score = MutableLiveData<Int>()
@@ -54,9 +55,9 @@ class GameViewModel : ViewModel() {
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
-//             GameFinished()
+//          GameFinished() should happen here
         } else {
-            word = wordList.removeAt(0)
+            word.value = wordList.removeAt(0)
         }
     }
 
