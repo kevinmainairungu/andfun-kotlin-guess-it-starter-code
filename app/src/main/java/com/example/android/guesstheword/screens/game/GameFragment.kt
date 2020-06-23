@@ -72,6 +72,7 @@ class GameFragment : Fragment() {
             viewModel.onSkip()
 
             updateWordText()
+
         }
         viewModel.score.observe(this, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
@@ -84,7 +85,7 @@ class GameFragment : Fragment() {
 
 
 
-    fun GameFinished() {
+   fun gameFinished() {
         Toast.makeText(activity, "Game has just finished", Toast.LENGTH_LONG).show()
 //        We use the elvis operator to check if the score value is not null. If it is give it the value 0
         val currentScore = viewModel.score.value ?: 0
