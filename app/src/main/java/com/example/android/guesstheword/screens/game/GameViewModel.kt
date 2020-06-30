@@ -1,12 +1,29 @@
 package com.example.android.guesstheword.screens.game
 
+import android.os.CountDownTimer
+import android.text.format.DateUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
 class GameViewModel : ViewModel() {
-//    LiveData MutableList
+    companion object {
+//        when the game is over
+        private const val Done = 0L
+
+        private const val ONE_SECOND = 1000L
+
+        private const val COUNTDOWN_TIME = 60000L
+    }
+
+    private val timer: CountDownTimer
+
+    private val _currentTime = MutableLiveData<Long>()
+    val currentTime: LiveData<Long>
+        get() = _currentTime
+
+    //    LiveData MutableList
     private var _word = MutableLiveData<String>()
     val word : LiveData<String>
         get() = _word
@@ -29,6 +46,20 @@ class GameViewModel : ViewModel() {
         nextWord()
         _word.value = ""
         _score.value = 0
+
+        timer = object : CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                _currentTime.value = (millisUntilFinished / ONE_SECOND)
+            }
+
+            override fun onFinish() {
+                _currentTime.value = Done
+                _eventGameFinished.value = true
+            }
+        }
+
+        timer.start()
     }
 
 
@@ -66,10 +97,9 @@ class GameViewModel : ViewModel() {
     private fun nextWord() {
         //Select and remove a word from the list
         if (wordList.isEmpty()) {
-            _eventGameFinished.value = true
-        } else {
-            _word.value = wordList.removeAt(0)
+           resetList()
         }
+          _word.value = wordList.removeAt(0)
     }
 
     //  the score value is null we can add a null checker and call the minus method passing in 1
@@ -88,6 +118,7 @@ class GameViewModel : ViewModel() {
 
     override fun onCleared() {
         super.onCleared()
+        timer.cancel()
         Timber.i("GameViewModel destroyed")
     }
 
