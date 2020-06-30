@@ -1,15 +1,20 @@
 package com.example.android.guesstheword.screens.game
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import timber.log.Timber
 
 class GameViewModel : ViewModel() {
-//    livedata mutablelist
-    var word = MutableLiveData<String>()
+//    LiveData MutableList
+    private var _word = MutableLiveData<String>()
+    val word : LiveData<String>
+        get() = _word
 
     // The current score
-    val score = MutableLiveData<Int>()
+    private val _score = MutableLiveData<Int>()
+    val score : LiveData<Int>
+    get() = _score
 
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>
@@ -17,8 +22,8 @@ class GameViewModel : ViewModel() {
     init {
         resetList()
         nextWord()
-        word.value = ""
-        score.value = 0
+        _word.value = ""
+        _score.value = 0
     }
 
 
@@ -58,19 +63,19 @@ class GameViewModel : ViewModel() {
         if (wordList.isEmpty()) {
 //          GameFinished() should happen here
         } else {
-            word.value = wordList.removeAt(0)
+            _word.value = wordList.removeAt(0)
         }
     }
 
     //  the score value is null we can add a null checker and call the minus method passing in 1
 //  Subtracting but with null safety
     fun onSkip() {
-        score.value = (score.value)?.minus(1)
+        _score.value = (score.value)?.minus(1)
         nextWord()
     }
 // addition with null safety
     fun onCorrect() {
-        score.value = (score.value)?.plus(1)
+        _score.value = (score.value)?.plus(1)
         nextWord()
     }
 
