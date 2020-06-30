@@ -97,7 +97,7 @@ class GameFragment : Fragment() {
     /** Methods for updating the UI **/
 
     private fun updateWordText() {
-        binding.wordText.text = viewModel.word.toString()
+        binding.wordText.text = viewModel.word.value
 
     }
 
