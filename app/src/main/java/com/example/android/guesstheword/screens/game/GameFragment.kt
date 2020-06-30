@@ -74,9 +74,19 @@ class GameFragment : Fragment() {
             updateWordText()
 
         }
-//        lifecycle observer no need to call onDestroy
+// observer for the score
         viewModel.score.observe(this, Observer { newScore ->
             binding.scoreText.text = newScore.toString()
+        })
+// observer for the word
+        viewModel.word.observe(this, Observer { newWord ->
+            binding.wordText.text = newWord
+        })
+        viewModel.eventgameFinished.observe(this, Observer { hasFinished ->
+            if (hasFinished){
+                gameFinished()
+                viewModel.onGameFinishComplete()
+            }
         })
 
         updateWordText()
@@ -87,7 +97,6 @@ class GameFragment : Fragment() {
 
 
    fun gameFinished() {
-        Toast.makeText(activity, "Game has just finished", Toast.LENGTH_LONG).show()
 //        We use the elvis operator to check if the score value is not null. If it is give it the value 0
         val currentScore = viewModel.score.value ?: 0
         val action = GameFragmentDirections.actionGameToScore(currentScore)
