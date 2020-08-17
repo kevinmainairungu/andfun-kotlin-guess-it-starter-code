@@ -39,7 +39,7 @@ class GameViewModel : ViewModel() {
 
     // The list of words - the front of the list is the next word to guess
     private lateinit var wordList: MutableList<String>
-
+//    a companion object is initialized when  the class is  first loaded(when the first time it's referenced by another code that is being executed)
     init {
         _eventGameFinished.value = false
         resetList()
@@ -60,6 +60,7 @@ class GameViewModel : ViewModel() {
         }
 
         timer.start()
+        DateUtils.formatElapsedTime(COUNTDOWN_TIME)
     }
 
 
