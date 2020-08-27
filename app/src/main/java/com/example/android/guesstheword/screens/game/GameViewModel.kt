@@ -88,7 +88,7 @@ class GameViewModel : ViewModel() {
                 "roll",
                 "bubble",
                 "book",
-                "television"
+                "television",
                 "school",
                 "fish"
         )
