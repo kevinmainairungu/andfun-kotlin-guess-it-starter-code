@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import timber.log.Timber
 
 // creating the viewModel factory with view Members
+// create a viewmodel provider
 class ScoreViewModelFactory(private val finalScore: Int) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         Timber.i("viewModelFactory invoked")
