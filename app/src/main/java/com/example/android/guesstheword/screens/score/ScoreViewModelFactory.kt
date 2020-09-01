@@ -3,12 +3,15 @@ package com.example.android.guesstheword.screens.score
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import timber.log.Timber
+import java.lang.IllegalArgumentException
 
 // creating the viewModel factory with view Members
-// create a viewmodel provider
+//class ScoreViewModelFactory(private val finalScore: Int) : ViewModelProvider.Factory {
 class ScoreViewModelFactory(private val finalScore: Int) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        Timber.i("viewModelFactory invoked")
-        TODO("Not yet implemented")
+        if (modelClass.isAssignableFrom(ScoreViewModel::class.java)) {
+            return ScoreViewModel(finalScore) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

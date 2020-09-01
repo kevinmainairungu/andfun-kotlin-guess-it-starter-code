@@ -26,6 +26,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.android.guesstheword.R
 import com.example.android.guesstheword.databinding.ScoreFragmentBinding
+import com.example.android.guesstheword.screens.game.SCORE_VALUE
 
 /**
  * Fragment where the final score is shown, after the game is over
@@ -47,6 +48,7 @@ class ScoreFragment : Fragment() {
         )
 
         // Get args using by navArgs property delegate
+        viewModelFactory = ScoreViewModelFactory()
         val scoreFragmentArgs by navArgs<ScoreFragmentArgs>()
         binding.scoreText.text = scoreFragmentArgs.score.toString()
         binding.playAgainButton.setOnClickListener { onPlayAgain() }
